@@ -9,8 +9,9 @@ on:
 
 jobs:
   build:
-
-    runs-on: ghcr.io/jiu-xiao/kernel-docker:main
+    runs-on: ubuntu-latest
+    container:
+      image: ghcr.io/jiu-xiao/kernel-docker:main
 
     steps:
     - uses: actions/checkout@v3
