@@ -2725,7 +2725,11 @@ static void profile_load_work(struct work_struct *work)
 	fg_dbg(fg, FG_STATUS, "profile loading started\n");
 
 	fg_gen4_get_nominal_capacity(chip, &nom_cap_uah);
-	fg_gen4_store_learned_capacity(chip, &nom_cap_uah);
+	fg_gen4_get_learned_capacity(chip, &learned_cap_uah);
+
+	if(nom_cap_uah != learned_cap_uah){
+		fg_gen4_store_learned_capacity(chip, &nom_cap_uah);
+	}
 
 	if (chip->dt.multi_profile_load &&
 		chip->batt_age_level != chip->last_batt_age_level) {
