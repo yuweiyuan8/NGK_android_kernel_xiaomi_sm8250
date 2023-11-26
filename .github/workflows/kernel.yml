@@ -2,10 +2,6 @@ name: Kernel build CI
 
 on:
   workflow_dispatch:
-  push:
-    branches: [ "t-caf" ]
-  pull_request:
-    branches: [ "t-caf" ]
 
 jobs:
   build:

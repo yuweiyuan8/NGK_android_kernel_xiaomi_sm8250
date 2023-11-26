@@ -1,4 +1,4 @@
-name: Kernel build CI - internal resistance
+name: Kernel build CI test
 
 on:
   workflow_dispatch:
@@ -15,14 +15,11 @@ jobs:
       run: mkdir drivers/input/touchscreen/focaltech_3658u/include && mkdir drivers/input/touchscreen/focaltech_touch/include
 
     - name: change full capacity
-      run: sed -i '767s/.*/      *learned_cap_uah =  ${{ vars.capacity }} * 1000;/' drivers/power/supply/qcom/qpnp-fg-gen4.c
+      run: sed -i '736s/.*/	*nom_cap_uah = ${{ vars.capacity }} *1000;/' drivers/power/supply/qcom/qpnp-fg-gen4.c
 
 
     - name: change design full capacity
       run: sed -i '28s/.*/	qcom,nom-batt-capacity-mah = < ${{ vars.capacity }} >;/' arch/arm64/boot/dts/vendor/qcom/fg-gen4-batterydata-alioth-FMT-4520mah.dtsi
-
-    - name: change internal resistance
-      run: sed -i '29s/.*/	qcom,batt-id-kohm = < ${{ vars.resistance }} >;/' arch/arm64/boot/dts/vendor/qcom/fg-gen4-batterydata-alioth-FMT-4520mah.dtsi
 
     - name: prebuild
       run: bash compile.sh
