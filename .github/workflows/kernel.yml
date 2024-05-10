@@ -12,7 +12,11 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     - name: create shit dir
-      run: mkdir drivers/input/touchscreen/focaltech_3658u/include && mkdir drivers/input/touchscreen/focaltech_touch/include
+      run: |
+       mkdir -p drivers/input/touchscreen/focaltech_3658u/include/firmware
+       mkdir -p drivers/input/touchscreen/focaltech_spi/include/firmware
+       mkdir -p drivers/input/touchscreen/focaltech_touch/include/firmware
+       mkdir -p drivers/input/touchscreen/focaltech_touch/include/pramboot
 
     - name: change full capacity
       run: sed -i '736s/.*/	*nom_cap_uah = ${{ vars.capacity }} *1000;/' drivers/power/supply/qcom/qpnp-fg-gen4.c
