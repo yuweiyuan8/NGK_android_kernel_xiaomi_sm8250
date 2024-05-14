@@ -4,7 +4,7 @@
 PHONE="lmi"
 ARCH="arm64"
 SUBARCH="arm64"
-DEFCONFIG=nogravity-${PHONE}_defconfig
+DEFCONFIG=${PHONE}_defconfig
 COMPILER=clang
 LINKER="lld"
 COMPILERDIR="/media/pierre/Expension/Android/PocoX3Pro/Kernels/Proton-Clang"
